@@ -5,16 +5,6 @@ import TextField from '../TextField'
 import './Form.css'
 
 const Form = props => {
-  const teams = [
-    'Programação',
-    'Front-End',
-    'Data Science',
-    'Devops',
-    'UX e Design',
-    'Mobile',
-    'Inovação e Gestão'
-  ]
-
   const [name, setName] = useState('')
   const [role, setRole] = useState('')
   const [image, setImage] = useState('')
@@ -28,6 +18,10 @@ const Form = props => {
       image,
       team
     })
+    setName('')
+    setRole('')
+    setImage('')
+    setTeam('')
   }
   return (
     <section className="form">
@@ -57,7 +51,7 @@ const Form = props => {
           value={team}
           onAlteration={value => setTeam(value)}
           label="Team"
-          items={teams}
+          items={props.teams}
         />
         <Button>Criar Card</Button>
       </form>

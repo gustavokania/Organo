@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Banner from './components/Banner'
+import Footer from './components/Footer'
 import Form from './components/Form'
 import Team from './components/Team'
 
@@ -52,15 +53,22 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <Form onNewContributor={contributor => onAddedContributor(contributor)} />
+      <Form
+        teams={teams.map(team => team.name)}
+        onNewContributor={contributor => onAddedContributor(contributor)}
+      />
       {teams.map(team => (
         <Team
           key={team.name}
           name={team.name}
           colorPrimary={team.colorPrimary}
           colorSecondary={team.colorSecondary}
+          contributors={contributors.filter(
+            contributor => contributor.team == team.name
+          )}
         />
       ))}
+      <Footer />
     </div>
   )
 }
