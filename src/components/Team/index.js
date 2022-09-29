@@ -12,6 +12,8 @@ const Team = props => {
         <div className="contributors">
           {props.contributors.map(contributor => (
             <Contributor
+              backgroundColor={props.colorPrimary}
+              key={contributor.name}
               name={contributor.name}
               role={contributor.role}
               image={contributor.image}
